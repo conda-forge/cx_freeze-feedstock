@@ -12,7 +12,7 @@ source:
     - 0001-Update-freezer.py-395.patch
 
 build:
-  number: 0
+  number: 1
   script:
     # https://github.com/anthony-tuininga/cx_Freeze/issues/407
     - copy %RECIPE_DIR%\cxfreeze-postinstall .  # [win]
