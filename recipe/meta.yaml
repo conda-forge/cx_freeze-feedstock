@@ -1,4 +1,4 @@
-{% set version = "5.1.1" %}
+{% set version = "6.0" %}
 
 package:
   name: cx_freeze
@@ -6,13 +6,13 @@ package:
 
 source:
   url: https://pypi.io/packages/source/c/cx_Freeze/cx_Freeze-{{ version }}.tar.gz
-  sha256: 2eadddde670f5c5f6cf88638a0ac4e5d5fe181292a31063275fa56c7bf22426b
+  sha256: ca81d8e5f3da9eace9dc20e1c4250b69d2b096f63c6eb5c3e073c4d3df7ceb18
   patches:
     # python 3.7 fix
     - 0001-Update-freezer.py-395.patch
 
 build:
-  number: 1
+  number: 0
   script:
     # https://github.com/anthony-tuininga/cx_Freeze/issues/407
     - copy %RECIPE_DIR%\cxfreeze-postinstall .  # [win]
