@@ -15,9 +15,10 @@ build:
   number: 1
   skip: true  # [py2k]
   script:
-    # https://github.com/anthony-tuininga/cx_Freeze/issues/407
-    #- copy %RECIPE_DIR%\cxfreeze-postinstall .  # [win]
     - "{{ PYTHON }} -m pip install . -vv"
+  entry_points:
+    - cxfreeze = cx_Freeze.main:main
+    - cxfreeze-quickstart = cx_Freeze.setupwriter:main
 
 requirements:
   build:
