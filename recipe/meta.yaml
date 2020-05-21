@@ -14,6 +14,8 @@ source:
     - PR627.patch
     # https://github.com/anthony-tuininga/cx_Freeze/pull/647
     - PR647.patch
+    # libpython3.7m.a' generated with LTO version 6.0 instead of the expected 6.2
+    - no-lto.patch  # [linux]
 
 build:
   number: 3
