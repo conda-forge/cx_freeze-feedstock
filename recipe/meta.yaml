@@ -42,7 +42,7 @@ test:
 
 about:
   home: https://anthony-tuininga.github.io/cx_Freeze
-  license: Python Software Foundation
+  license: PSF-2.0
   license_family: PSF
   license_file: README.md
   summary: create standalone executables from Python scripts
