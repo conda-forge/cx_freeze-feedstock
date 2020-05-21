@@ -1,0 +1,102 @@
+From c03f1f2d409f74c85e603978d356a109a5956271 Mon Sep 17 00:00:00 2001
+From: Michel Zou <xantares09@hotmail.com>
+Date: Sat, 2 May 2020 12:04:21 +0200
+Subject: [PATCH 1/2] cmd: Add --include-files option
+
+---
+ cx_Freeze/main.py  | 9 +++++++++
+ doc/src/script.rst | 4 ++++
+ 2 files changed, 13 insertions(+)
+
+diff --git a/cx_Freeze/main.py b/cx_Freeze/main.py
+index 3d92c46..e877502 100644
+--- a/cx_Freeze/main.py
++++ b/cx_Freeze/main.py
+@@ -99,6 +99,10 @@ def ParseCommandLine():
+             metavar = "NAME",
+             help = "name of file in which to place the list of dependent files "
+                    "which were copied into the target directory")
++    parser.add_option("--include-files",
++            dest = "includeFiles",
++            metavar = "NAMES",
++            help = "comma separated list of paths to include")
+     parser.add_option("-z", "--zip-include",
+             dest = "zipIncludes",
+             action = "append",
+@@ -143,6 +147,10 @@ def ParseCommandLine():
+         sys.path = paths + sys.path
+     if options.script is not None:
+         sys.path.insert(0, os.path.dirname(options.script))
++    if options.includeFiles:
++        options.includeFiles = options.includeFiles.split(",")
++    else:
++        options.includeFiles = []
+     zipIncludes = []
+     if options.zipIncludes:
+         for spec in options.zipIncludes:
+@@ -170,6 +178,7 @@ def main():
+             optimizeFlag = options.optimized,
+             path = None,
+             targetDir = options.targetDir,
++            includeFiles = options.includeFiles,
+             zipIncludes = options.zipIncludes,
+             silent = options.silent)
+     freezer.Freeze()
+diff --git a/doc/src/script.rst b/doc/src/script.rst
+index cfcc63a..6fbd883 100644
+--- a/doc/src/script.rst
++++ b/doc/src/script.rst
+@@ -95,6 +95,10 @@ Further customization can be done using the following options:
+     name of file in which to place the list of dependent
+     files which were copied into the target directory
+ 
++.. option:: --include-files=FILES
++
++    comma separated list of paths to include
++
+ .. option:: -z SPEC, --zip-include=SPEC
+ 
+     name of file to add to the zip file or a specification
+
+From b5e9ed912defa06a16a92877501c3e652f3a2b7c Mon Sep 17 00:00:00 2001
+From: Michel Zou <xantares09@hotmail.com>
+Date: Sat, 2 May 2020 12:09:05 +0200
+Subject: [PATCH 2/2] cmd: Removed unused --ext-list-file option
+
+---
+ cx_Freeze/main.py  | 5 -----
+ doc/src/script.rst | 5 -----
+ 2 files changed, 10 deletions(-)
+
+diff --git a/cx_Freeze/main.py b/cx_Freeze/main.py
+index e877502..759ab1f 100644
+--- a/cx_Freeze/main.py
++++ b/cx_Freeze/main.py
+@@ -94,11 +94,6 @@ def ParseCommandLine():
+             dest = "excludeModules",
+             metavar = "NAMES",
+             help = "comma separated list of modules to exclude")
+-    parser.add_option("--ext-list-file",
+-            dest = "extListFile",
+-            metavar = "NAME",
+-            help = "name of file in which to place the list of dependent files "
+-                   "which were copied into the target directory")
+     parser.add_option("--include-files",
+             dest = "includeFiles",
+             metavar = "NAMES",
+diff --git a/doc/src/script.rst b/doc/src/script.rst
+index 6fbd883..1c84d82 100644
+--- a/doc/src/script.rst
++++ b/doc/src/script.rst
+@@ -90,11 +90,6 @@ Further customization can be done using the following options:
+ 
+     comma separated list of modules to exclude
+ 
+-.. option:: --ext-list-file=NAME
+-
+-    name of file in which to place the list of dependent
+-    files which were copied into the target directory
+-
+ .. option:: --include-files=FILES
+ 
+     comma separated list of paths to include

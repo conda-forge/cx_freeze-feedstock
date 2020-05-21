@@ -12,9 +12,11 @@ source:
     - script.patch
     # https://github.com/anthony-tuininga/cx_Freeze/issues/353
     - PR627.patch
+    # https://github.com/anthony-tuininga/cx_Freeze/pull/647
+    - PR647.patch
 
 build:
-  number: 2
+  number: 3
   script:
     - "{{ PYTHON }} -m pip install . -vv"
   entry_points:
