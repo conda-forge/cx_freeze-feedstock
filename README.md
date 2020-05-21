@@ -3,7 +3,7 @@ About cx_freeze
 
 Home: https://anthony-tuininga.github.io/cx_Freeze
 
-Package license: Python Software Foundation
+Package license: PSF-2.0
 
 Feedstock license: BSD 3-Clause
 

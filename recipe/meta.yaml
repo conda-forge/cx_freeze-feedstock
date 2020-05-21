@@ -12,9 +12,13 @@ source:
     - script.patch
     # https://github.com/anthony-tuininga/cx_Freeze/issues/353
     - PR627.patch
+    # https://github.com/anthony-tuininga/cx_Freeze/pull/647
+    - PR647.patch
+    # libpython3.7m.a' generated with LTO version 6.0 instead of the expected 6.2
+    - no-lto.patch  # [linux]
 
 build:
-  number: 2
+  number: 3
   script:
     - "{{ PYTHON }} -m pip install . -vv"
   entry_points:
@@ -38,7 +42,7 @@ test:
 
 about:
   home: https://anthony-tuininga.github.io/cx_Freeze
-  license: Python Software Foundation
+  license: PSF-2.0
   license_family: PSF
   license_file: README.md
   summary: create standalone executables from Python scripts
