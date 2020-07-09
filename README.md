@@ -5,7 +5,7 @@ Home: https://anthony-tuininga.github.io/cx_Freeze
 
 Package license: PSF-2.0
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: create standalone executables from Python scripts
 
