@@ -1,7 +1,7 @@
 About cx_freeze
 ===============
 
-Home: https://anthony-tuininga.github.io/cx_Freeze
+Home: https://marcelotduarte.github.io/cx_Freeze
 
 Package license: PSF-2.0
 
