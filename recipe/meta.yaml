@@ -7,12 +7,9 @@ package:
 source:
   url: https://pypi.io/packages/source/c/cx_Freeze/cx_Freeze-{{ version }}.tar.gz
   sha256: 44bbbcea3196b79da77cc22637cb28a825b51182d32209e8a3f6cd4042edc247
-  patches:
-    # libpython3.7m.a' generated with LTO version 6.0 instead of the expected 6.2
-    - no-lto.patch  # [linux]
 
 build:
-  number: 0
+  number: 1
   script:
     - {{ PYTHON }} -m pip install . -vv
   entry_points:
