@@ -5,11 +5,9 @@ Home: https://marcelotduarte.github.io/cx_Freeze
 
 Package license: PSF-2.0
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cx_freeze-feedstock/blob/master/LICENSE.txt)
 
 Summary: create standalone executables from Python scripts
-
-
 
 Current build status
 ====================
