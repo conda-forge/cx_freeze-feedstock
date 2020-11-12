@@ -22,10 +22,12 @@ requirements:
   host:
     - python
     - pip
+    # ld: cannot find -lpython3.8
+    - libpython-static  # [unix and py>=38]
   run:
     - python
     - setuptools
-    - importlib_metadata
+    - importlib_metadata  # [py<38]
 
 test:
   imports:
