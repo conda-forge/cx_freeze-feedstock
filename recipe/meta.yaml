@@ -1,4 +1,4 @@
-{% set version = "6.4.2" %}
+{% set version = "6.5" %}
 
 package:
   name: cx_freeze
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/c/cx_Freeze/cx_Freeze-{{ version }}.tar.gz
-  sha256: fe0af7c658442402bcd209f993219a6ab98a951459495b4a141eb03b552a1c68
+  sha256: 0430f3151f4f9e490ac0f7c16f5ea866072a0e4489d12c5f6f17330f45365fed
 
 build:
   number: 0
