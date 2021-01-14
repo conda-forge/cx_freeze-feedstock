@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index d4d27d3..3ea8308 100755
+--- a/setup.py
++++ b/setup.py
+@@ -65,7 +65,7 @@ class build_ext(distutils.command.build_ext.build_ext):
+                 extra_args.extend(get_config_var("LOCALMODLIBS").split())
+             # PR #812 - fix a bug using macOS on Github Actions
+             # PY_LDFLAGS_NODIST = "-flto -Wl,-export_dynamic -g"
+-            if get_config_var("PY_LDFLAGS_NODIST"):
++            if 0:
+                 extra_args.extend(get_config_var("PY_LDFLAGS_NODIST").split())
+             else:
+                 extra_args.append("-s")
