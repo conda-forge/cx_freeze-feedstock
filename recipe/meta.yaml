@@ -11,8 +11,8 @@ source:
 build:
   number: 0
   script:
-    - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"   # [unix]
-    - export MACOSX_DEPLOYMENT_TARGET=10.13         # [osx and py>=38]
+    #- export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"   # [unix]
+    #- export MACOSX_DEPLOYMENT_TARGET=10.13         # [osx and py>=38]
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
     - ls -l ${PREFIX}       # [unix]
     - ls -l ${PREFIX}/lib   # [unix]
