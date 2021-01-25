@@ -11,9 +11,9 @@ source:
 build:
   number: 0
   script:
-    #- export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"   # [unix]
     - ls -l ${PREFIX}       # [unix or osx]
     - ls -l ${PREFIX}/lib   # [unix or osx]
+    - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"   # [osx]
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
     - cxfreeze = cx_Freeze.main:main
