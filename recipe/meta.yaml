@@ -11,9 +11,11 @@ source:
 build:
   number: 0
   script:
-    - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"               # [unix]
-    - export LDFLAGS="${LDFLAGS} -mmacosx-version-min=10.13"  # [osx]
+    - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"   # [unix]
+    - export MACOSX_DEPLOYMENT_TARGET=10.13         # [osx]
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+    - ls -l ${PREFIX}
+    - ls -l ${PREFIX}/lib
   entry_points:
     - cxfreeze = cx_Freeze.main:main
     - cxfreeze-quickstart = cx_Freeze.setupwriter:main
@@ -28,6 +30,8 @@ requirements:
     - pip
     - python
     - setuptools
+    # ld: cannot find -lpython3.8
+    - libpython-static  # [unix and py>=38]
   run:
     - python
     - setuptools
