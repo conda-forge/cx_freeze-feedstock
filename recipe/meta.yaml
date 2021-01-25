@@ -11,6 +11,7 @@ source:
 build:
   number: 0
   script:
+    - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"               # [unix]
     - export LDFLAGS="${LDFLAGS} -mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}"  # [osx]
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
