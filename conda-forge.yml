@@ -1,5 +1,5 @@
 provider:
-  win: azure
+  osx: travis
 conda_forge_output_validation: true
 bot:
   inspection: false

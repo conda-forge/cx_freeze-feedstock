@@ -13,7 +13,7 @@ build:
   script:
     - ls -l ${PREFIX}       # [unix or osx]
     - ls -l ${PREFIX}/lib   # [unix or osx]
-    - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"   # [osx]
+    #- export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"   # [osx]
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
     - cxfreeze = cx_Freeze.main:main
@@ -22,9 +22,6 @@ build:
 requirements:
   build:
     - {{ compiler("c") }}
-    - pip
-    - python
-    - setuptools
   host:
     - pip
     - python
