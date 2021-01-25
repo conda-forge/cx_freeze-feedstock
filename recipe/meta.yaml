@@ -12,11 +12,9 @@ build:
   number: 0
   script:
     #- export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"   # [unix]
-    #- export MACOSX_DEPLOYMENT_TARGET=10.13         # [osx and py>=38]
-    - export LDFLAGS="${LDFLAGS} -mmacosx-version-min=10.13"  # [osx and py>=39]
-    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
     - ls -l ${PREFIX}       # [unix or osx]
     - ls -l ${PREFIX}/lib   # [unix or osx]
+    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
     - cxfreeze = cx_Freeze.main:main
     - cxfreeze-quickstart = cx_Freeze.setupwriter:main
