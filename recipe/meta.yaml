@@ -12,7 +12,8 @@ build:
   number: 0
   script:
     - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"               # [unix]
-    - export LDFLAGS="${LDFLAGS} -mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}"  # [osx]
+    - export LDFLAGS="${LDFLAGS} -mmacosx-version-min=10.13"  # [osx]
+    - echo "----->> LDFLAGS=${LDFLAGS}"
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
     - cxfreeze = cx_Freeze.main:main
@@ -30,7 +31,6 @@ requirements:
     - setuptools
   run:
     - python
-    - setuptools
     - importlib-metadata
 
 test:
