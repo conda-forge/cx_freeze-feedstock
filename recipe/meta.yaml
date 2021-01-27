@@ -32,7 +32,7 @@ requirements:
     - pip
     - setuptools
     # ld: cannot find -lpython3.8
-    - libpython-static  # [linux and py>=38]
+    - libpython-static  # [unix and py>=38]
   run:
     - python
     - setuptools
