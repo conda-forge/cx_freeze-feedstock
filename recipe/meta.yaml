@@ -1,4 +1,4 @@
-{% set version = "6.5" %}
+{% set version = "6.5.3" %}
 
 package:
   name: cx_freeze
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/c/cx_Freeze/cx_Freeze-{{ version }}.tar.gz
-  sha256: 0430f3151f4f9e490ac0f7c16f5ea866072a0e4489d12c5f6f17330f45365fed
+  sha256: e0d03cabcdf9b9c21354807ed9f06fa9481a8fd5a0838968a830f01a70820ff1
 
 build:
   number: 0
@@ -22,12 +22,13 @@ requirements:
   host:
     - python
     - pip
+    - setuptools
     # ld: cannot find -lpython3.8
     - libpython-static  # [unix and py>=38]
   run:
     - python
     - setuptools
-    - importlib_metadata
+    - importlib-metadata
 
 test:
   imports:
