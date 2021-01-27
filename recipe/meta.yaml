@@ -7,8 +7,8 @@ package:
 source:
   url: https://pypi.io/packages/source/c/cx_Freeze/cx_Freeze-{{ version }}.tar.gz
   sha256: e0d03cabcdf9b9c21354807ed9f06fa9481a8fd5a0838968a830f01a70820ff1
-  patches:
-    - nolto.patch
+  #patches:
+  #  - nolto.patch
 
 build:
   number: 0
