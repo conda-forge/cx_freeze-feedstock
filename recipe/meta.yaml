@@ -13,6 +13,12 @@ source:
 build:
   number: 0
   script:
+    - echo "MACOSX_DEPLOYMENT_TARGET=$MACOSX_DEPLOYMENT_TARGET"  # [osx]
+    - echo "MACOSX_SDK_VERSION=$MACOSX_SDK_VERSION"  # [osx]
+    - echo "set"  # [osx]
+    - set  # [osx]
+    - echo "python -m sysconfig"  # [osx]
+    - {{ PYTHON }} -m sysconfig  # [osx]
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
     - cxfreeze = cx_Freeze.main:main
