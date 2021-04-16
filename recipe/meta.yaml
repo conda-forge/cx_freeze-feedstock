@@ -1,4 +1,4 @@
-{% set version = "6.5.3" %}
+{% set version = "6.6" %}
 
 package:
   name: cx_freeze
@@ -6,29 +6,38 @@ package:
 
 source:
   url: https://pypi.io/packages/source/c/cx_Freeze/cx_Freeze-{{ version }}.tar.gz
-  sha256: e0d03cabcdf9b9c21354807ed9f06fa9481a8fd5a0838968a830f01a70820ff1
+  sha256: c4af8ad3f7e7d71e291c1dec5d0fb26bbe92df834b098ed35434c901fbd6762f
 
 build:
   skip: true  # [osx and py==39]
   number: 0
   script:
+    # patch cx_Logging 3.0 - 3.1 will fix this
+    - git clone https://github.com/anthony-tuininga/cx_Logging.git  # [win]
+    - copy "cx_Logging\src\cx_Logging.h" "%PREFIX%\include\cx_Logging.h"  # [win]
+    - set "PIP_NO_INDEX=False"  # [win]
+    - {{ PYTHON }} -m pip install "cx_Logging>=3.0" --no-cache-dir  # [win]
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
-    - cxfreeze = cx_Freeze.main:main
+    - cxfreeze = cx_Freeze.cli:main
     - cxfreeze-quickstart = cx_Freeze.setupwriter:main
 
 requirements:
   build:
     - {{ compiler('c') }}
-  host:
-    - python
     - pip
+    - python
+    - setuptools
+  host:
+    - pip
+    - python
+    - setuptools
     # ld: cannot find -lpython3.8
     - libpython-static  # [unix and py>=38]
   run:
     - python
     - setuptools
-    - importlib-metadata
+    - importlib-metadata >=3.1.1
 
 test:
   imports:
