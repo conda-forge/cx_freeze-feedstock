@@ -12,9 +12,6 @@ build:
   skip: true  # [osx and py==39]
   number: 0
   script:
-    # patch cx_Logging 3.0 - 3.1 will fix this
-    - git clone https://github.com/anthony-tuininga/cx_Logging.git  # [win]
-    - copy "cx_Logging\src\cx_Logging.h" "%PREFIX%\include\cx_Logging.h"  # [win]
     - set "PIP_NO_INDEX=False"  # [win]
     - {{ PYTHON }} -m pip install "cx_Logging>=3.0" --no-cache-dir  # [win]
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
