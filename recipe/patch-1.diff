@@ -1,0 +1,17 @@
+diff --git a/setup.py b/setup.py
+index a2598eb..7b12392 100755
+--- a/setup.py
++++ b/setup.py
+@@ -89,10 +89,9 @@ class build_ext(setuptools.command.build_ext.build_ext):
+             if get_config_var("LOCALMODLIBS"):
+                 extra_args.extend(get_config_var("LOCALMODLIBS").split())
+             # fix a bug using macOS on Github Actions
+-            if "--with-lto" in get_config_var("CONFIG_ARGS"):
+-                extra_args.append("-flto")
++            if sys.platform == "darwin":
+                 extra_args.append("-Wl,-export_dynamic")
+-            if sys.platform != "darwin":
++            else:
+                 extra_args.append("-s")
+                 extra_args.append("-Wl,-rpath,$ORIGIN/lib")
+                 extra_args.append("-Wl,-rpath,$ORIGIN/../lib")
