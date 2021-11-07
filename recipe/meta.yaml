@@ -1,4 +1,4 @@
-{% set version = "6.7" %}
+{% set version = "6.8.2" %}
 
 package:
   name: cx_freeze
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/c/cx_Freeze/cx_Freeze-{{ version }}.tar.gz
-  sha256: 050f1dd133a04810bd7f38ac7ae3b290054acb2ff4f6e73f7a286266d153495d
+  sha256: 5de019ff7a3911f3ffcbb56d765e7f6876f8fefb0fed7a1f017fb420df8bac7b
   patches:
     - patch-1.diff  # [osx and py==39]
 
 build:
-  number: 1
+  number: 0
   script:
     - set "PIP_NO_INDEX=False"  # [win]
     - {{ PYTHON }} -m pip install "cx_Logging>=3.0" --no-cache-dir  # [win]
