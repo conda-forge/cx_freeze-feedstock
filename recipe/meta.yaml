@@ -7,8 +7,6 @@ package:
 source:
   url: https://pypi.io/packages/source/c/cx_Freeze/cx_Freeze-{{ version }}.tar.gz
   sha256: 5de019ff7a3911f3ffcbb56d765e7f6876f8fefb0fed7a1f017fb420df8bac7b
-  patches:
-    - patch-1.diff  # [osx and py==39]
 
 build:
   number: 0
