@@ -11,7 +11,7 @@ source:
     - patch-1.diff  # [osx and py==39]
 
 build:
-  number: 1
+  number: 2
   script:
     - set "PIP_NO_INDEX=False"  # [win]
     - {{ PYTHON }} -m pip install "cx_Logging>=3.0" --no-cache-dir  # [win]
