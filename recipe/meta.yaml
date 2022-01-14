@@ -1,19 +1,17 @@
+{% set name = "cx_Freeze" %}
 {% set version = "6.9" %}
 
 package:
-  name: cx_freeze
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/c/cx_Freeze/cx_Freeze-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 673aa3199af2ef87fc03a43a30e5d78b27ced2cedde925da89c55b5657da267b
 
 build:
-  number: 1
+  number: 2
   script:
-    - set "PIP_NO_INDEX=False"  # [win]
-    - {{ PYTHON }} -m pip install "cx_Logging>=3.0" --no-cache-dir  # [win]
-    - set "PIP_NO_INDEX=True"  # [win]
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
     - cxfreeze = cx_Freeze.cli:main
@@ -28,6 +26,7 @@ requirements:
     - pip
     - python
     - setuptools
+    - cx_logging >=3.0  # [win]
     # ld: cannot find -lpython3.8
     - libpython-static  # [unix and py>=38]
   run:
@@ -35,6 +34,7 @@ requirements:
     - setuptools
     - importlib-metadata >=4.8.3
     - patchelf >=0.12   # [linux]
+    - cx_logging >=3.0  # [win]
     - py-lief >=0.11.5  # [win]
 
 test:
@@ -47,8 +47,8 @@ about:
   home: https://marcelotduarte.github.io/cx_Freeze
   license: PSF-2.0
   license_family: PSF
-  license_file: README.md
-  summary: create standalone executables from Python scripts
+  license_file: doc/src/license.rst
+  summary: Create standalone executables from Python scripts, with the same performance and is cross-platform.
 
 extra:
   recipe-maintainers:
