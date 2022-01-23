@@ -7,7 +7,7 @@ Package license: PSF-2.0
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cx_freeze-feedstock/blob/master/LICENSE.txt)
 
-Summary: create standalone executables from Python scripts
+Summary: Create standalone executables from Python scripts, with the same performance and is cross-platform.
 
 Current build status
 ====================
