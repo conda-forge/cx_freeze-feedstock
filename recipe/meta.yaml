@@ -1,5 +1,5 @@
 {% set name = "cx_Freeze" %}
-{% set version = "6.10" %}
+{% set version = "6.11.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: e5b71bf57b9881ac142fbebeae2c8b0d3294b56f6e48ab64032321e3b1a2ba27
+  sha256: c461fc3a33cbdfc2b6bbdd02cb0ea048d496e9e33067489cae778d929379bee8
 
 build:
-  number: 1
+  number: 0
   script:
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
@@ -25,14 +25,14 @@ requirements:
   host:
     - pip
     - python
-    - setuptools
+    - setuptools <=60.10.0
     - importlib-metadata >=4.8.3
     - cx_logging >=3.0  # [win]
     # ld: cannot find -lpython3.8
     - libpython-static  # [unix and py>=38]
   run:
     - python
-    - setuptools
+    - setuptools <=60.10.0
     - importlib-metadata >=4.8.3
     - packaging >=21.0
     - patchelf >=0.12   # [linux]
