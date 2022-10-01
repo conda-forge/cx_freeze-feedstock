@@ -8,9 +8,12 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 8f3a30c9e3394f290655e346d3b460910656b30ac6347a87499bb5ad365c6e7c
+  patches:
+    # Improve tkinter hook to work on all OS
+    - PR1526.patch
 
 build:
-  number: 1
+  number: 2
   script:
     - rm ${PREFIX}/lib/python3.7/config-3.7m-x86_64-linux-gnu/libpython3.7m.a  # [linux and py<=37]
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
