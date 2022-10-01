@@ -10,8 +10,9 @@ source:
   sha256: 8f3a30c9e3394f290655e346d3b460910656b30ac6347a87499bb5ad365c6e7c
 
 build:
-  number: 0
+  number: 1
   script:
+    - rm ${PREFIX}/lib/python3.7/config-3.7m-x86_64-linux-gnu/libpython3.7m.a  # [linux and py<=37]
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
     - cxfreeze = cx_Freeze.cli:main
@@ -25,14 +26,12 @@ requirements:
   host:
     - pip
     - python
-    - setuptools <=60.10.0
+    - setuptools >=59
     - importlib-metadata >=4.8.3
     - cx_logging >=3.0  # [win]
-    # ld: cannot find -lpython3.8
-    - libpython-static  # [unix and py>=38]
   run:
     - python
-    - setuptools <=60.10.0
+    - setuptools >=59
     - importlib-metadata >=4.8.3
     - packaging >=21.0
     - patchelf >=0.12   # [linux]
