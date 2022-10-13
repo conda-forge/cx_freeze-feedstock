@@ -1,5 +1,5 @@
 {% set name = "cx_Freeze" %}
-{% set version = "6.11.1" %}
+{% set version = "6.12.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 8f3a30c9e3394f290655e346d3b460910656b30ac6347a87499bb5ad365c6e7c
-  patches:
-    # Improve tkinter hook to work on all OS
-    - PR1526.patch
+  sha256: 4caf5258192337e1d0c63376d79cc875a6af17690b676461d09e2ef018f67096
 
 build:
-  number: 2
+  number: 0
   script:
     - rm ${PREFIX}/lib/python3.7/config-3.7m-x86_64-linux-gnu/libpython3.7m.a  # [linux and py<=37]
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
@@ -29,13 +26,13 @@ requirements:
   host:
     - pip
     - python
-    - setuptools >=59
-    - importlib-metadata >=4.8.3
+    - setuptools >=59.0.1
+    - importlib-metadata >=4.8.3  # [py<310]
     - cx_logging >=3.0  # [win]
   run:
     - python
-    - setuptools >=59
-    - importlib-metadata >=4.8.3
+    - setuptools >=59.0.1
+    - importlib-metadata >=4.8.3  # [py<310]
     - packaging >=21.0
     - patchelf >=0.12   # [linux]
     - cx_logging >=3.0  # [win]
