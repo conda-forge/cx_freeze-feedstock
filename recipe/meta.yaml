@@ -10,7 +10,7 @@ source:
   sha256: 543f08fb89e02797c9224002f250607820b8cbff3ccf13d9ff9cbd9e238e481d
 
 build:
-  number: 0
+  number: 1
   script:
     - rm ${PREFIX}/lib/python3.7/config-3.7m-x86_64-linux-gnu/libpython3.7m.a  # [linux and py<=37]
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
