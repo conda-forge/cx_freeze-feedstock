@@ -1,5 +1,5 @@
 {% set name = "cx_Freeze" %}
-{% set version = "6.13.1" %}
+{% set version = "6.14.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f694f54daf292e973d92b14df0a2e9ddbd74206caf32389a5370a7e1e54089a4
+  sha256: b9ea77f59500f867b59d948983db0920b30255fc720deb3965af553b601f6d25
 
 build:
   number: 0
@@ -26,17 +26,14 @@ requirements:
   host:
     - pip
     - python
-    - setuptools >=59.0.1
-    - importlib-metadata >=4.8.3  # [py<310]
-    - cx_logging >=3.0  # [win]
+    - setuptools >=61.2
+    - cx_logging >=3.1  # [win]
   run:
     - python
-    - setuptools >=59.0.1
-    - importlib-metadata >=4.8.3  # [py<310]
-    - packaging >=21.0
-    - patchelf >=0.12   # [linux]
-    - cx_logging >=3.0  # [win]
-    - py-lief >=0.11.5  # [win]
+    - setuptools >=61.2
+    - patchelf >=0.14   # [linux]
+    - cx_logging >=3.1  # [win]
+    - py-lief >=0.12.0  # [win]
 
 test:
   imports:
