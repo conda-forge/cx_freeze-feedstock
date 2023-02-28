@@ -1,11 +1,11 @@
-About cx_freeze
-===============
+About cx_freeze-feedstock
+=========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cx_freeze-feedstock/blob/main/LICENSE.txt)
 
 Home: https://marcelotduarte.github.io/cx_Freeze
 
 Package license: PSF-2.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cx_freeze-feedstock/blob/main/LICENSE.txt)
 
 Summary: Create standalone executables from Python scripts, with the same performance and is cross-platform.
 
