@@ -1,5 +1,5 @@
 {% set name = "cx_Freeze" %}
-{% set version = "6.15.2" %}
+{% set version = "6.15.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: c251c82e842ed29064f058742f007fd67359fe5fd17c331740b1bc3c96e7cc53
+  sha256: 89545237bc16c7dde45f145e401822a19c597e51ed36eaafbb58f0a4c5878605
 
 build:
   number: 0
@@ -26,11 +26,11 @@ requirements:
   host:
     - pip
     - python
-    - setuptools >=61.2
+    - setuptools >=62.6
     - cx_logging >=3.1  # [win]
   run:
     - python
-    - setuptools >=61.2
+    - setuptools >=62.6
     - patchelf >=0.14   # [linux]
     - cx_logging >=3.1  # [win]
     - py-lief >=0.12.0  # [win]
