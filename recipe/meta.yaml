@@ -1,5 +1,5 @@
 {% set name = "cx_Freeze" %}
-{% set version = "6.15.7" %}
+{% set version = "6.15.8" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f97f455a4a46ee0c076d922a29fb53eff462a165dd0423fa27e27c2a4453b40b
+  sha256: 04e63a345b6795be5a46999e190173a28d6d2cb51dcb4947fa13571a462ce336
 
 build:
   number: 0
   script:
-    - rm ${PREFIX}/lib/python3.7/config-3.7m-x86_64-linux-gnu/libpython3.7m.a  # [linux and py<=37]
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
     - cxfreeze = cx_Freeze.cli:main
@@ -27,13 +26,14 @@ requirements:
     - pip
     - python
     - setuptools >=62.6
-    - cx_logging >=3.1  # [win]
+    - cx_logging >=3.1   # [win]
   run:
     - python
     - setuptools >=62.6
-    - patchelf >=0.14   # [linux]
-    - cx_logging >=3.1  # [win]
-    - py-lief >=0.12.0  # [win]
+    - filelock >=3.11.0  # [linux]
+    - patchelf >=0.14    # [linux]
+    - cx_logging >=3.1   # [win]
+    - py-lief >=0.12.0   # [win]
 
 test:
   imports:
