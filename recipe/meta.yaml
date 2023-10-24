@@ -1,5 +1,5 @@
 {% set name = "cx_Freeze" %}
-{% set version = "6.15.9" %}
+{% set version = "6.15.10" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: affc2ee01d0825721c187ffb8e530602acdd193c9f0ec74351fd84b0d1c76ca7
+  sha256: 05cd267759692f511861d22860d35e2a05bfbf738f962c157618bb8c771d2320
 
 build:
   number: 0
