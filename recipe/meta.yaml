@@ -1,5 +1,5 @@
 {% set name = "cx_Freeze" %}
-{% set version = "7.0.0rc0 %}
+{% set version = "7.0.0rc0" %}
 
 package:
   name: {{ name|lower }}
