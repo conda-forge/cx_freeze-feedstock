@@ -1,13 +1,13 @@
 {% set name = "cx_Freeze" %}
-{% set version = "6.15.16" %}
+{% set version = "7.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: c63991886ff2a5319f8f0d07c0349a6bbe1a65b5f320f8b9243888e63c9a4a22
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|lower }}-{{ version }}.tar.gz
+  sha256: b03f2854a15dd1e8962660d18882a71fefba0e1b6f68337193d4a072d1fc36e6
 
 build:
   number: 0
@@ -26,6 +26,7 @@ requirements:
     - pip
     - python
     - setuptools >=62.6
+    - typing_extensions >=4.10.0
     - cx_logging >=3.1   # [win]
   run:
     - python
