@@ -46,19 +46,18 @@ test:
     - pytest-mock
     - pytest-timeout
     - pytest-xdist
-    - pip:
-      - pytest-datafiles
   source_files:
     - tests
   commands:
     - cxfreeze --version
+    - pip install -U pytest-datafiles
     - pytest -nauto --no-cov
 
 about:
   home: https://marcelotduarte.github.io/cx_Freeze
   license: PSF-2.0
   license_family: PSF
-  license_file: doc/src/license.rst
+    license_file: LICENSE.md
   summary: Create standalone executables from Python scripts, with the same performance and is cross-platform.
 
 extra:
