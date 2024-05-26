@@ -10,7 +10,7 @@ source:
   sha256: b03f2854a15dd1e8962660d18882a71fefba0e1b6f68337193d4a072d1fc36e6
 
 build:
-  number: 0
+  number: 1
   script:
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
@@ -39,8 +39,19 @@ requirements:
 test:
   imports:
     - cx_Freeze
+  requires:
+    - pip
+    - pytest
+    - pytest-cov
+    - pytest-datafiles
+    - pytest-mock
+    - pytest-timeout
+    - pytest-xdist
+  source_files:
+    - tests
   commands:
     - cxfreeze --version
+    - pytest -nauto --no-cov
 
 about:
   home: https://marcelotduarte.github.io/cx_Freeze
