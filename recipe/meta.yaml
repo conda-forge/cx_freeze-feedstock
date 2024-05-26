@@ -41,9 +41,9 @@ test:
     - cx_Freeze
   requires:
     - pip
+      - pytest-datafiles
     - pytest
     - pytest-cov
-    - pytest-datafiles
     - pytest-mock
     - pytest-timeout
     - pytest-xdist
