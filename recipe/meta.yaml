@@ -41,12 +41,13 @@ test:
     - cx_Freeze
   requires:
     - pip
-      - pytest-datafiles
     - pytest
     - pytest-cov
     - pytest-mock
     - pytest-timeout
     - pytest-xdist
+    - pip:
+      - pytest-datafiles
   source_files:
     - tests
   commands:
