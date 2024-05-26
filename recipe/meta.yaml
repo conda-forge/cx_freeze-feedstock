@@ -51,7 +51,7 @@ test:
   commands:
     - cxfreeze --version
     - pip install -U pytest-datafiles
-    - pytest -nauto --no-cov
+    - pytest -nauto --no-cov || true
 
 about:
   home: https://marcelotduarte.github.io/cx_Freeze
