@@ -1,5 +1,5 @@
 {% set name = "cx_Freeze" %}
-{% set version = "7.1.0" %}
+{% set version = "7.1.0.post0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|lower }}-{{ version }}.tar.gz
-  sha256: c0ffa8dd1d577847f58520361d4787d5e416014b5b52307efe1749c64b41cb98
+  sha256: 6e8fd0fdaf697db4d4d033eff768abcee4785898e0f29a7c4cb4196244ee6359
 
 build:
   number: 0
@@ -22,6 +22,7 @@ requirements:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - pip
     - python
