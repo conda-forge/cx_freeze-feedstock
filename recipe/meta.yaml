@@ -10,9 +10,8 @@ source:
   sha256: 335c30bad0e3e653655f230993308458bedc997baf5b7a995e8641deba2eb287
 
 build:
-  number: 0
-  script:
-    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+  number: 1
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - cxfreeze = cx_Freeze.cli:main
     - cxfreeze-quickstart = cx_Freeze.setupwriter:main
@@ -24,16 +23,19 @@ requirements:
     - {{ compiler("c") }}
     - {{ stdlib("c") }}
   host:
-    - pip
     - python
-    - setuptools >=62.6
-    - typing_extensions >=4.10.0
+    - pip
+    - setuptools >=65.6.3
+    - typing_extensions >=4.10.0  # [py<310]
     - cx_logging >=3.1   # [win]
   run:
     - python
-    - setuptools >=62.6
-    - filelock >=3.11.0  # [linux]
+    - setuptools >=65.6.3
+    # cabarchive >=0.2.4
+    - filelock >=3.12.3
+    # striprtf >=0.0.26
     - patchelf >=0.14    # [linux]
+    # dmgbuild >=1.6.1   # [osx]
     - cx_logging >=3.1   # [win]
     - py-lief >=0.12.0   # [win]
 
@@ -41,18 +43,20 @@ test:
   imports:
     - cx_Freeze
   requires:
-    - pip
     - pytest
     - pytest-cov
+    - pytest-datafiles
     - pytest-mock
     - pytest-timeout
     - pytest-xdist
   source_files:
+    - pyproject.toml
+    - cx_Freeze/icons
+    - samples
     - tests
   commands:
     - cxfreeze --version
-    - pip install -U pytest-datafiles
-    - pytest -nauto --no-cov || true
+    - pytest -nauto --no-cov
 
 about:
   home: https://marcelotduarte.github.io/cx_Freeze

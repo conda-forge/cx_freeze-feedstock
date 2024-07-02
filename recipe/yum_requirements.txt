@@ -1,0 +1,2 @@
+fuse
+rpm-build
