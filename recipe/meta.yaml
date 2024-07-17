@@ -1,5 +1,5 @@
 {% set name = "cx_Freeze" %}
-{% set version = "7.1.1" %}
+{% set version = "7.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|lower }}-{{ version }}.tar.gz
-  sha256: 335c30bad0e3e653655f230993308458bedc997baf5b7a995e8641deba2eb287
+  sha256: c57f7101b4d35132464b1ec88cb8948c3b7c5b4ece4bb354c16091589cb33583
   patches:
     # hooks: support numpy 2.0 (#2466)
     - 2466.patch
@@ -15,7 +15,7 @@ source:
     - 2490.patch
 
 build:
-  number: 2
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - cxfreeze = cx_Freeze.cli:main
