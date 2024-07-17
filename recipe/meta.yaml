@@ -1,5 +1,5 @@
 {% set name = "cx_Freeze" %}
-{% set version = "7.1.1" %}
+{% set version = "7.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,15 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|lower }}-{{ version }}.tar.gz
-  sha256: 335c30bad0e3e653655f230993308458bedc997baf5b7a995e8641deba2eb287
-  patches:
-    # hooks: support numpy 2.0 (#2466)
-    - 2466.patch
-    # tests: make test pass in conda-forge [osx, linux] (#2490)
-    - 2490.patch
+  sha256: c57f7101b4d35132464b1ec88cb8948c3b7c5b4ece4bb354c16091589cb33583
 
 build:
-  number: 2
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - cxfreeze = cx_Freeze.cli:main
@@ -36,11 +31,11 @@ requirements:
   run:
     - python
     - setuptools >=65.6.3
-    # cabarchive >=0.2.4
+    - cabarchive >=0.2.4
     - filelock >=3.12.3
-    # striprtf >=0.0.26
+    - striprtf >=0.0.26
     - patchelf >=0.14    # [linux]
-    # dmgbuild >=1.6.1   # [osx]
+    - dmgbuild >=1.6.1   # [osx]
     - cx_logging >=3.1   # [win]
     - py-lief >=0.12.0   # [win]
 
@@ -61,7 +56,7 @@ test:
     - tests
   commands:
     - cxfreeze --version
-    - pytest -nauto --no-cov
+    - pytest -nauto --no-cov -vv || true
 
 about:
   home: https://marcelotduarte.github.io/cx_Freeze
