@@ -10,7 +10,7 @@ source:
   sha256: 730d5ed75d41b6ef35318ecb8cf345521415ae4108945e8745cf9b446840788e
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - cxfreeze = cx_Freeze.cli:main
