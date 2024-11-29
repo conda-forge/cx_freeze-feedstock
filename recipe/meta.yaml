@@ -1,5 +1,5 @@
 {% set name = "cx_Freeze" %}
-{% set version = "7.2.6" %}
+{% set version = "7.2.7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|lower }}-{{ version }}.tar.gz
-  sha256: 68d0d7eb52f88bfd32716269279b989dfd1635fa871506ac50904af831837555
+  sha256: c4d43a4e5357352ac5a89203fda3a8cfadf033d43682f73abbefd3860ce50fb4
 
 build:
   number: 0
@@ -61,7 +61,7 @@ test:
     - tests
   commands:
     - cxfreeze --version
-    - pytest -nauto --no-cov -vv || true
+    - pytest -nauto --no-cov -vv
 
 about:
   home: https://marcelotduarte.github.io/cx_Freeze
