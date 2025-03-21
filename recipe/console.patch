@@ -1,5 +1,5 @@
 diff --git a/cx_Freeze/executable.py b/cx_Freeze/executable.py
-index b19b5055..a5de6cbe 100644
+index b19b5055..56cc0f04 100644
 --- a/cx_Freeze/executable.py
 +++ b/cx_Freeze/executable.py
 @@ -11,7 +11,6 @@ from sysconfig import get_config_var
@@ -24,12 +24,12 @@ index b19b5055..a5de6cbe 100644
 -            and ABI_THREAD == ""
 -            and not (IS_MACOS and version == (3, 13))
 -        ):
-+        if version <= (3, 13):
++        if version < (3, 13):
              name = name or "console_legacy"
          else:
              name = name or "console"
 diff --git a/setup.py b/setup.py
-index 7185a255..171b121b 100644
+index 7185a255..8278a42f 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -285,11 +285,7 @@ def get_extensions() -> list[Extension]:
@@ -41,12 +41,12 @@ index 7185a255..171b121b 100644
 -        and abi_thread == ""
 -        and not (IS_MACOS and version == (3, 13))
 -    ):
-+    if version <= (3, 13):
++    if version < (3, 13):
          extensions += [
              Extension(
                  "cx_Freeze.bases.console_legacy",
 diff --git a/tests/test_executables.py b/tests/test_executables.py
-index cdba2c9d..7e65b0ef 100644
+index cdba2c9d..7e95bf16 100644
 --- a/tests/test_executables.py
 +++ b/tests/test_executables.py
 @@ -12,10 +12,8 @@ from setuptools import Distribution
@@ -69,7 +69,7 @@ index cdba2c9d..7e65b0ef 100644
 -    and ABI_THREAD == ""
 -    and not (IS_MACOS and sys.version_info[:2] == (3, 13))
 -):
-+if sys.version_info[:2] <= (3, 13):
++if sys.version_info[:2] < (3, 13):
      TEST_VALID_PARAMETERS += [
          ("base", None, "console_legacy-"),
          ("base", "console_legacy", "console_legacy-"),
