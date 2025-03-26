@@ -10,9 +10,10 @@ source:
   sha256: 80e1f87bb152ed0f97f7c6435e0237d44aade99979927c4627771322a25d550d
   patches:
     - console.patch
+    - zlib.patch
 
 build:
-  number: 3
+  number: 4
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - cxfreeze = cx_Freeze.cli:main
