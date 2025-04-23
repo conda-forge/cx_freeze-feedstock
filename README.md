@@ -179,7 +179,7 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-cx_freeze-green.svg)](https://anaconda.org/conda-forge/cx_freeze) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/cx_freeze.svg)](https://anaconda.org/conda-forge/cx_freeze) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/cx_freeze.svg)](https://anaconda.org/conda-forge/cx_freeze) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/cx_freeze.svg)](https://anaconda.org/conda-forge/cx_freeze) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-cx__freeze-green.svg)](https://anaconda.org/conda-forge/cx_freeze) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/cx_freeze.svg)](https://anaconda.org/conda-forge/cx_freeze) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/cx_freeze.svg)](https://anaconda.org/conda-forge/cx_freeze) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/cx_freeze.svg)](https://anaconda.org/conda-forge/cx_freeze) |
 
 Installing cx_freeze
 ====================
