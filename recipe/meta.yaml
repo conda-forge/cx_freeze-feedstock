@@ -10,7 +10,7 @@ source:
   sha256: 491998d513f04841ec7967e2a3792db198597bde8a0c9333706b1f96060bdb35
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - cxfreeze = cx_Freeze.cli:main
@@ -26,19 +26,19 @@ requirements:
     - python
     - pip
     - setuptools >=77.0.3
-    - cx_logging >=3.1   # [win]
+    - cx_logging >=3.1       # [win]
   run:
     - python
     - setuptools >=65.6.3
     - filelock >=3.12.3
     - packaging >=24.0
-    - tomli >=2.0.1               # [py<311]
-    - patchelf >=0.14     # [linux]
-    - dmgbuild >=1.6.1    # [osx]
-    - cabarchive >=0.2.4  # [win]
-    - cx_logging >=3.1    # [win]
-    - py-lief >=0.15.1    # [win]
-    - striprtf >=0.0.26   # [win]
+    - tomli >=2.0.1          # [py<311]
+    - patchelf >=0.14,<0.18  # [linux]
+    - dmgbuild >=1.6.1       # [osx]
+    - cabarchive >=0.2.4     # [win]
+    - cx_logging >=3.1       # [win]
+    - py-lief >=0.15.1       # [win]
+    - striprtf >=0.0.26      # [win]
 
 test:
   imports:
@@ -55,7 +55,7 @@ test:
     - tests
   commands:
     - cxfreeze --version
-    - pytest -nauto --no-cov -vv
+    - pytest --dist=loadfile -nauto --no-cov -vv
 
 about:
   home: https://marcelotduarte.github.io/cx_Freeze
