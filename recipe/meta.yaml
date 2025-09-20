@@ -1,5 +1,5 @@
 {% set name = "cx_Freeze" %}
-{% set version = "8.4.0" %}
+{% set version = "8.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|lower }}-{{ version }}.tar.gz
-  sha256: 8e2e332f571529c7b55cc58521add9de222c4a681620a537b1d29c5d17a24041
+  sha256: d36e804d393aea1b4ad28cff0d8b8a562cc25ea462f06bcf6b265edbc02eecfb
 
 build:
   number: 1
@@ -44,7 +44,7 @@ test:
   imports:
     - cx_Freeze
   requires:
-    - coverage >=7.10.2
+    - coverage >=7.10.3
     - pytest
     - pytest-mock
     - pytest-timeout
