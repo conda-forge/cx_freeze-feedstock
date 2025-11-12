@@ -61,6 +61,7 @@ tests:
   - python:
       imports:
         - cx_Freeze
+      pip_check: false
   - files:
       source:
         - pyproject.toml
