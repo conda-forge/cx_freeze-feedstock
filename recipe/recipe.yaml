@@ -76,7 +76,8 @@ tests:
         - pytest-xdist
     script:
       - cxfreeze --version
-      - coverage run || true
+      - if: not (osx and x86_64)
+        then: coverage run || true
 
 about:
   license: PSF-2.0
