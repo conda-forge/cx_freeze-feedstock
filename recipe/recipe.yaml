@@ -1,0 +1,91 @@
+schema_version: 1
+
+context:
+  name: cx_Freeze
+  version: 8.4.1
+  sha256: d36e804d393aea1b4ad28cff0d8b8a562cc25ea462f06bcf6b265edbc02eecfb
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name|lower }}-${{ version }}.tar.gz
+  sha256: ${{ sha256 }}
+
+build:
+  number: 2
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  python:
+    entry_points:
+      - cxfreeze = cx_Freeze.cli:main
+      - cxfreeze-quickstart = cx_Freeze.setupwriter:main
+
+requirements:
+  build:
+    - if: build_platform != target_platform
+      then:
+        - python
+        - cross-python_${{ target_platform }}
+    - ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
+  host:
+    - python
+    - pip
+    - setuptools >=77.0.3
+    - if: win
+      then:
+        - cx_logging >=3.1
+  run:
+    - python
+    - setuptools >=65.6.3
+    - filelock >=3.12.3
+    - packaging >=24.0
+    - if: match(python, "<3.11")
+      then:
+        - tomli >=2.0.1
+    - if: linux
+      then:
+        - patchelf >=0.14,<0.18
+    - if: osx
+      then:
+        - dmgbuild >=1.6.1
+    - if: win
+      then:
+        - cabarchive >=0.2.4
+        - cx_logging >=3.1
+        - py-lief >=0.15.1
+        - striprtf >=0.0.26
+
+tests:
+  - python:
+      imports:
+        - cx_Freeze
+      pip_check: false
+  - files:
+      source:
+        - pyproject.toml
+        - samples
+        - tests
+    requirements:
+      run:
+        - coverage >=7.10.3
+        - pytest
+        - pytest-mock
+        - pytest-timeout
+        - pytest-xdist
+    script:
+      - cxfreeze --version
+      - if: not (osx and x86_64)
+        then: coverage run || true
+
+about:
+  license: PSF-2.0
+  license_file: LICENSE.md
+  summary: Create standalone executables from Python scripts, with the same performance and is cross-platform.
+  homepage: https://marcelotduarte.github.io/cx_Freeze
+
+extra:
+  recipe-maintainers:
+    - marcelotduarte
+    - jschueller
