@@ -2,8 +2,8 @@ schema_version: 1
 
 context:
   name: cx_Freeze
-  version: 8.4.1
-  sha256: d36e804d393aea1b4ad28cff0d8b8a562cc25ea462f06bcf6b265edbc02eecfb
+  version: "8.5.0"
+  sha256: 4bdf7a4273e224fb98800785b72541f3c578107891529b5bd8068b5d0a19fd95
 
 package:
   name: ${{ name|lower }}
@@ -14,7 +14,7 @@ source:
   sha256: ${{ sha256 }}
 
 build:
-  number: 2
+  number: 0
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   python:
     entry_points:
