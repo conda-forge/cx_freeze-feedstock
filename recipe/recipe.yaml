@@ -2,8 +2,8 @@ schema_version: 1
 
 context:
   name: cx_Freeze
-  version: 8.4.1
-  sha256: d36e804d393aea1b4ad28cff0d8b8a562cc25ea462f06bcf6b265edbc02eecfb
+  version: 8.5.0
+  sha256: 4bdf7a4273e224fb98800785b72541f3c578107891529b5bd8068b5d0a19fd95
 
 package:
   name: ${{ name|lower }}
@@ -14,48 +14,40 @@ source:
   sha256: ${{ sha256 }}
 
 build:
-  number: 2
-  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
+  script: python -m pip install . -vv --no-deps --no-build-isolation
   python:
     entry_points:
       - cxfreeze = cx_Freeze.cli:main
       - cxfreeze-quickstart = cx_Freeze.setupwriter:main
 
 requirements:
-  build:
-    - if: build_platform != target_platform
-      then:
-        - python
-        - cross-python_${{ target_platform }}
-    - ${{ compiler('c') }}
-    - ${{ stdlib('c') }}
   host:
     - python
     - pip
-    - setuptools >=77.0.3
+    - setuptools >=78.1.1,<81
     - if: win
       then:
         - cx_logging >=3.1
   run:
     - python
-    - setuptools >=65.6.3
-    - filelock >=3.12.3
+    - freeze-core >=0.4.0
     - packaging >=24.0
+    - setuptools >=78.1.1,<81
     - if: match(python, "<3.11")
       then:
         - tomli >=2.0.1
     - if: linux
       then:
+        - filelock >=3.15.3
         - patchelf >=0.14,<0.18
     - if: osx
       then:
         - dmgbuild >=1.6.1
     - if: win
       then:
-        - cabarchive >=0.2.4
         - cx_logging >=3.1
         - py-lief >=0.15.1
-        - striprtf >=0.0.26
 
 tests:
   - python:
