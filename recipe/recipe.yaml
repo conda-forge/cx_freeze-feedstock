@@ -14,7 +14,7 @@ source:
   sha256: ${{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   script: python -m pip install . -vv --no-deps --no-build-isolation
   python:
     entry_points:
@@ -28,10 +28,10 @@ requirements:
     - setuptools >=78.1.1,<81
     - if: win
       then:
-        - cx_logging >=3.1
+        - cx_logging >=3.2
   run:
     - python
-    - freeze-core >=0.4.0
+    - freeze-core >=0.4.1
     - packaging >=24.0
     - setuptools >=78.1.1,<81
     - if: match(python, "<3.11")
@@ -48,6 +48,9 @@ requirements:
       then:
         - cx_logging >=3.1
         - py-lief >=0.15.1
+    - if: win and match(python, "==3.13")
+      then:
+        - python-msilib >=0.4.3
 
 tests:
   - python:
