@@ -22,13 +22,15 @@ build:
       - cxfreeze-quickstart = cx_Freeze.setupwriter:main
 
 requirements:
+  build:
+    - if: build_platform != target_platform
+      then:
+        - python
+        - cross-python_${{ target_platform }}
   host:
     - python
     - pip
     - setuptools >=78.1.1,<81
-    - if: win
-      then:
-        - cx_logging >=3.2
   run:
     - python
     - freeze-core >=0.4.1
@@ -46,7 +48,6 @@ requirements:
         - dmgbuild >=1.6.1
     - if: win
       then:
-        - cx_logging >=3.2
         - py-lief >=0.15.1
     - if: win and match(python, "==3.13")
       then:
