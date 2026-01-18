@@ -14,7 +14,7 @@ source:
   sha256: ${{ sha256 }}
 
 build:
-  number: 1
+  number: 2
   script: python -m pip install . -vv --no-deps --no-build-isolation
   python:
     entry_points:
@@ -46,7 +46,7 @@ requirements:
         - dmgbuild >=1.6.1
     - if: win
       then:
-        - cx_logging >=3.1
+        - cx_logging >=3.2
         - py-lief >=0.15.1
     - if: win and match(python, "==3.13")
       then:
@@ -65,7 +65,7 @@ tests:
     requirements:
       run:
         - coverage >=7.10.3
-        - pytest
+        - pytest >=9.0.2
         - pytest-mock
         - pytest-timeout
         - pytest-xdist
