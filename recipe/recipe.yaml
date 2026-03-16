@@ -2,8 +2,8 @@ schema_version: 1
 
 context:
   name: cx_Freeze
-  version: "8.6.0"
-  sha256: 04de4e97a0fbebf5c67aec74ecd62c206f282163a111cda4343367d653b2c46d
+  version: "8.6.1"
+  sha256: 4892f033ec446e6d0ed4a17f21fa6460c09f3c782a9db4c95f6655e360538496
 
 package:
   name: ${{ name|lower }}
@@ -49,9 +49,9 @@ requirements:
     - if: win
       then:
         - py-lief >=0.15.1
-    - if: win and match(python, "==3.13")
-      then:
-        - python-msilib >=0.4.3
+        - if: match(python, "==3.13")
+          then:
+            - python-msilib >=0.4.3
 
 tests:
   - python:
