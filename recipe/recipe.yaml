@@ -2,8 +2,8 @@ schema_version: 1
 
 context:
   name: cx_Freeze
-  version: "8.6.2"
-  sha256: 131d771088e8edcc6c87509ad6ed9bcf0dc4bb12c69c39ecf6c0ffbb4cbb1b52
+  version: "8.6.3"
+  sha256: d3bcdd0891f78d96f65d4879f362f163ad292bad76a42a1bddf58bcc9dcdb67b
 
 package:
   name: ${{ name|lower }}
