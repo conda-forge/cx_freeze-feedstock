@@ -7,7 +7,7 @@ Home: https://marcelotduarte.github.io/cx_Freeze
 
 Package license: PSF-2.0
 
-Summary: Create standalone executables from Python scripts, with the same performance and is cross-platform.
+Summary: Creates standalone executables from Python scripts with the same performance as the original script. It is cross-platform and should work on any platform that Python runs on.
 
 Current build status
 ====================
