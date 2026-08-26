@@ -4,6 +4,7 @@ context:
   name: cx_Freeze
   version: "8.7.0"
   sha256: 3d6aed189f96fb6d13182bbc6f33f73d14526fc6fec934286d0456e31faf1543
+  python_min: "3.10"
 
 package:
   name: ${{ name|lower }}
@@ -14,47 +15,46 @@ source:
   sha256: ${{ sha256 }}
 
 build:
-  number: 0
-  script: python -m pip install . -vv --no-deps --no-build-isolation
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   python:
     entry_points:
       - cxfreeze = cx_Freeze.cli:main
       - cxfreeze-quickstart = cx_Freeze.setupwriter:main
 
 requirements:
-  build:
-    - if: build_platform != target_platform
-      then:
-        - python
-        - cross-python_${{ target_platform }}
   host:
-    - python
+    - python ${{ python_min }}.*
     - pip
     - setuptools ==84.0
   run:
-    - python
+    - __${{ noarch_platform }}
+    - python >=${{ python_min }}
     - freeze-core ==0.6.1
     - packaging >=25.0
     - setuptools >=78.1.1,<85.0
     - if: match(python, "<3.11")
       then:
         - tomli >=2.0.1
-    - if: linux
+    - if: noarch_platform == "linux"
       then:
         - filelock >=3.20.3
         - patchelf >=0.14,!=0.18.*
-    - if: osx
+    - if: noarch_platform == "osx"
       then:
         - dmgbuild >=1.6.1
-    - if: win
+    - if: noarch_platform == "win"
       then:
-        - py-lief >=0.16.0,<1.1.0
-        - if: match(python, "==3.13")
-          then:
-            - python-msilib >=0.4.3
+        - py-lief >=0.16.1,<1.1.0
+    - if: noarch_platform == "win" and match(python, ">=3.13")
+      then:
+        - python-msilib >=0.4.3
 
 tests:
   - python:
+      python_version:
+        - ${{ python_min }}.*
       imports:
         - cx_Freeze
       pip_check: false
@@ -65,6 +65,7 @@ tests:
         - tests
     requirements:
       run:
+        - python ${{ python_min }}.*
         - coverage >=7.13.0
         - filelock >=3.20.3
         - pytest >=9.0.3
