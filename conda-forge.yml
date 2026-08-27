@@ -11,7 +11,4 @@ noarch_platforms:
   - linux_64
   - osx_64
   - win_64
-provider:
-  linux_aarch64: default
-  osx_arm64: default
 test: native

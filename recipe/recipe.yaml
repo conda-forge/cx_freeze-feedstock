@@ -44,8 +44,6 @@ requirements:
     - if: noarch_platform == "win"
       then:
         - py-lief >=0.16.1,<1.1.0
-    - if: noarch_platform == "win" and match(python, ">=3.13")
-      then:
         - python-msilib >=0.4.3
 
 tests:
@@ -72,8 +70,7 @@ tests:
         - pytest-xdist
     script:
       - cxfreeze --version
-      - if: not (osx and x86_64)
-        then: coverage run || true
+      - coverage run || true
 
 about:
   license: PSF-2.0
