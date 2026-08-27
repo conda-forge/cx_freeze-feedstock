@@ -9,7 +9,6 @@ github:
   tooling_branch_name: main
 noarch_platforms:
   - linux_64
-  - linux_aarch64
   - osx_64
   - osx_arm64
   - win_64

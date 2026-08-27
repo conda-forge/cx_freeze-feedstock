@@ -4,7 +4,7 @@ context:
   name: cx_Freeze
   version: "8.7.0"
   sha256: 3d6aed189f96fb6d13182bbc6f33f73d14526fc6fec934286d0456e31faf1543
-  python_min: "3.10"
+  python_min: "3.11"
 
 package:
   name: ${{ name|lower }}
@@ -34,9 +34,6 @@ requirements:
     - freeze-core ==0.6.1
     - packaging >=25.0
     - setuptools >=78.1.1,<85.0
-    - if: match(python, "<3.11")
-      then:
-        - tomli >=2.0.1
     - if: noarch_platform == "linux"
       then:
         - filelock >=3.20.3
@@ -55,6 +52,7 @@ tests:
   - python:
       python_version:
         - ${{ python_min }}.*
+        - "*"
       imports:
         - cx_Freeze
       pip_check: false
