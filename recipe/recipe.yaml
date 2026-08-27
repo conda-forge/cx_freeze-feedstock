@@ -38,7 +38,7 @@ requirements:
     - ${{ "patchelf >=0.14,!=0.18.*" if noarch_platform == "linux" }}
     - ${{ "dmgbuild >=1.6.1" if noarch_platform == "osx" }}
     - ${{ "py-lief >=0.16.1,<1.1.0" if noarch_platform == "win" }}
-    - ${{ "python-msilib >=0.4.3" if noarch_platform == "win"
+    - ${{ "python-msilib >=0.4.3" if noarch_platform == "win" }}
 
 tests:
   - python:
