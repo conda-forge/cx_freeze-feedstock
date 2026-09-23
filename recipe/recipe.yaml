@@ -4,7 +4,7 @@ context:
   name: cx_Freeze
   version: "8.7.1"
   sha256: 05c09b447cab2f3ee4512c2478e745c46323d079c61df6db501e01975ba4d3a5
-  python_min: "3.11"
+  #python_min: "3.11"
 
 package:
   name: ${{ name|lower }}
