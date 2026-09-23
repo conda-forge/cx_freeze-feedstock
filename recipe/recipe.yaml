@@ -2,8 +2,8 @@ schema_version: 1
 
 context:
   name: cx_Freeze
-  version: "8.7.0"
-  sha256: 3d6aed189f96fb6d13182bbc6f33f73d14526fc6fec934286d0456e31faf1543
+  version: "8.7.1"
+  sha256: 05c09b447cab2f3ee4512c2478e745c46323d079c61df6db501e01975ba4d3a5
   python_min: "3.11"
 
 package:
@@ -15,7 +15,7 @@ source:
   sha256: ${{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   python:
@@ -69,7 +69,7 @@ tests:
 about:
   license: PSF-2.0
   license_file: LICENSE.md
-  summary: Creates standalone executables from Python scripts with the same performance as the original script. It is cross-platform and should work on any platform that Python runs on. 
+  summary: Creates standalone executables from Python scripts with the same performance as the original script. It is cross-platform and should work on any platform that Python runs on.
   homepage: https://marcelotduarte.github.io/cx_Freeze
 
 extra:
