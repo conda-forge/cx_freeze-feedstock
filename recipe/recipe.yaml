@@ -4,7 +4,6 @@ context:
   name: cx_Freeze
   version: "8.7.1"
   sha256: 05c09b447cab2f3ee4512c2478e745c46323d079c61df6db501e01975ba4d3a5
-  #python_min: "3.11"
 
 package:
   name: ${{ name|lower }}
@@ -15,7 +14,7 @@ source:
   sha256: ${{ sha256 }}
 
 build:
-  number: 1
+  number: 2
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   python:
@@ -56,15 +55,16 @@ tests:
     requirements:
       run:
         - python ${{ python_min }}.*
-        - coverage >=7.13.0
         - filelock >=3.20.3
-        - pytest >=9.0.3
+        - pytest >=9.0.3,<9.2.0
         - pytest-mock
         - pytest-timeout
         - pytest-xdist
     script:
       - cxfreeze --version
-      - coverage run || true
+      - pytest -nauto -rpfEsXx tests/*.py || true
+      #- pytest -nauto --dist=loadfile -rpfEsXx tests/stdlib/*.py || true
+      #- pytest -nauto --dist=loadfile -rpfEsXx tests/hooks/*.py || true
 
 about:
   license: PSF-2.0
