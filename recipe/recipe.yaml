@@ -4,7 +4,7 @@ context:
   name: cx_Freeze
   version: "8.7.1"
   sha256: 05c09b447cab2f3ee4512c2478e745c46323d079c61df6db501e01975ba4d3a5
-  python_min: "3.11"
+  #python_min: "3.11"
 
 package:
   name: ${{ name|lower }}
@@ -15,7 +15,7 @@ source:
   sha256: ${{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   python:
@@ -31,7 +31,7 @@ requirements:
   run:
     - __${{ noarch_platform }}
     - python >=${{ python_min }}
-    - freeze-core ==0.6.1
+    - freeze-core >=0.6.1,!=0.7.*
     - packaging >=25.0
     - setuptools >=78.1.1,<85.0
     - ${{ "filelock >=3.20.3" if noarch_platform == "linux" }}
