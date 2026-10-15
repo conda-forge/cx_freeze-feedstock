@@ -2,8 +2,8 @@ schema_version: 1
 
 context:
   name: cx_Freeze
-  version: "8.7.1"
-  sha256: 05c09b447cab2f3ee4512c2478e745c46323d079c61df6db501e01975ba4d3a5
+  version: "8.7.2"
+  sha256: 48afc98b46d791d27eebf4d64881e2e59a0ba7d826986caacc30c043cc91d84c
 
 package:
   name: ${{ name|lower }}
@@ -14,7 +14,7 @@ source:
   sha256: ${{ sha256 }}
 
 build:
-  number: 2
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   python:
